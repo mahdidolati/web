@@ -1,6 +1,6 @@
 import { Book } from "../entities/Book";
 import { MyContext } from "src/types";
-import { Ctx, Query, Resolver } from "type-graphql";
+import { Arg, Ctx, Int, Query, Resolver } from "type-graphql";
 
 @Resolver()
 export class BookResolver {
@@ -9,5 +9,13 @@ export class BookResolver {
         @Ctx() {em}: MyContext
     ): Promise<Book[]>{
         return em.find(Book, {});
+    }
+
+    @Query(() => Book, { nullable: true }) 
+    book(
+        @Arg('id', () => Int) id: number,
+        @Ctx() {em}: MyContext
+    ): Promise<Book | null>{
+        return em.findOne(Book, { id });
     }
 }

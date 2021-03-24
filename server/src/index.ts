@@ -12,7 +12,7 @@ const main = async () => {
     // await orm.getMigrator().up();
     // const book = orm.em.create(Book, {title: "Book title"});
     // await orm.em.persistAndFlush(book);
-    console.log("hello");
+    // console.log("hello");
 
     const app = express();
 
